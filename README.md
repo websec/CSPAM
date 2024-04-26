@@ -23,6 +23,14 @@ Example of an Attack on a Csper.io Endpoint:
 
 This tool illustrates the vulnerability of CSP reporting endpoints to spam and malicious interference. Organizations must ensure their CSP reporting infrastructure is robust enough to handle unexpected surges in reports and is equipped with mechanisms to filter out illegitimate reports. Security teams should also be aware of the potential for such tools to be used against their systems and prepare accordingly.
 
+### History
+Apperently the issue with these directives have been known for a while now, years actually...
+However nobody seems to have made any Proof-of-Concept yet on how to CSP-Policies could be exploited, hopefully this script will help to bring some more awareness to this topic.
+
+### Conclusion
+Please do not assume CSP is obsolete, it is still a very robust security measure and we strongly advise everyone to implement this. just be caustious regarding the implementation of the directives `report-uri` and `report-to` , ideally the reporting
+endpoints should verify that the origin of the requests is actually the domain reporting.
+
 ## Disclaimer
 
 CSPAM is intended for use by security researchers and professionals in controlled environments to test the resilience of CSP implementations against misuse. This tool should only be used with explicit permission on systems where such testing is authorized. Misuse of this tool can lead to unintended legal and ethical issues.
