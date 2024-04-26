@@ -1,5 +1,6 @@
-**Align center:**
+**
 ![CSPAM-logo](./img/cspam.png)
+**
 
 # CSPAM
 Send Spoofed Telemetry Data / Violation Reports to CSP Policy Reporting Endpoint - Spoofer &amp; Spammer Utility
