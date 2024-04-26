@@ -15,6 +15,10 @@ CSPAM is explicitly designed as a proof-of-concept tool to demonstrate how Conte
 
 - **Exhausting Resource Limits:** Many CSP reporting services offer a limited number of free reports. CSPAM can be used to quickly exhaust these limits, imposing financial burdens or functional restrictions on the victim's reporting service.
 
+Example of an Attack on a Csper.io Endpoint:
+
+![CSP-Attack](./img/CSPSpoofingAttack.png)
+
 ### Implications
 
 This tool illustrates the vulnerability of CSP reporting endpoints to spam and malicious interference. Organizations must ensure their CSP reporting infrastructure is robust enough to handle unexpected surges in reports and is equipped with mechanisms to filter out illegitimate reports. Security teams should also be aware of the potential for such tools to be used against their systems and prepare accordingly.
