@@ -50,18 +50,18 @@ def send_report(url, endpoint, directive, randomize_domain):
     """ Send a CSP report to the specified endpoint with optional random domain. """
     if randomize_domain:
         random_domain = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) + ".com"
-        blocked_uri = f"http://{random_domain}/spoofedpage/spoofedfile.jss"
+        blocked_uri = f"http://{random_domain}/spoofedpage/spoofedfile.js"
         style_src = f"style-src cdn.{random_domain}"
         original_policy = f"default-src 'none'; {style_src}; {directive} {endpoint}"
     else:
-        blocked_uri = "http://spoofeddomain.com/spoofedpage/spoofedfile.jss"
+        blocked_uri = "http://spoofeddomain.com/spoofedpage/spoofedfile.js"
         style_src = "style-src cdn.spoofing.com"
         original_policy = f"default-src 'none'; {style_src}; {directive} {endpoint}"
 
     report_payload = {
         "csp-report": {
             "document-uri": url,
-            "referrer": "CSPwn",
+            "referrer": "CSPAM",
             "blocked-uri": blocked_uri,
             "violated-directive": style_src,
             "original-policy": original_policy,
