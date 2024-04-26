@@ -5,7 +5,7 @@ Send Spoofed Telemetry Data / Violation Reports to CSP Policy Reporting Endpoint
 
 ## Proof of Concept: Misusing CSP Policy Reporting Uri Directives
 
-CSPAM is explicitly designed as a proof-of-concept tool to demonstrate how Content Security Policy (CSP) reporting mechanisms can be exploited. The `report-uri` directive in CSP allows administrators to specify where the browser should send reports about policy violations. While intended for security monitoring and mitigation, this feature can be targeted by malicious actors using tools like CSPAM.
+CSPAM is explicitly designed as a proof-of-concept tool to demonstrate how Content Security Policy (CSP) reporting mechanisms can be exploited. The `report-uri` and `report-to` directive in CSP allows administrators to specify where the browser should send reports about policy violations. While intended for security monitoring and mitigation, this feature can be targeted by malicious actors using tools like CSPAM.
 
 ### Key Exploits Demonstrated by CSPAM:
 
