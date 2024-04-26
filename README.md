@@ -1,3 +1,4 @@
+**Align center:**
 ![CSPAM-logo](./img/cspam.png)
 
 # CSPAM
