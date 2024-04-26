@@ -28,7 +28,7 @@ Apperently the issue with these directives have been known for a while now, year
 However nobody seems to have made any Proof-of-Concept yet on how a CSP-Policies could be exploited in practice, hopefully this script will help to bring some more awareness to this topic.
 
 ### Conclusion
-Please do not assume CSP is obsolete, it is still a very robust security measure and we strongly advise everyone to implement this. just be caustious regarding the implementation of the directives `report-uri` and `report-to` , ideally the reporting
+Please do not assume CSP is obsolete, it is still a very robust security measure and we strongly advise everyone to implement this. just be cautious regarding the implementation of the directives `report-uri` and `report-to` , ideally the reporting
 endpoints should verify that the origin of the requests is actually the domain reporting.
 
 ## Disclaimer
