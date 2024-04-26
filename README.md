@@ -25,7 +25,7 @@ This tool illustrates the vulnerability of CSP reporting endpoints to spam and m
 
 ### History
 Apperently the issue with these directives have been known for a while now, years actually...
-However nobody seems to have made any Proof-of-Concept yet on how to CSP-Policies could be exploited, hopefully this script will help to bring some more awareness to this topic.
+However nobody seems to have made any Proof-of-Concept yet on how a CSP-Policies could be exploited in practice, hopefully this script will help to bring some more awareness to this topic.
 
 ### Conclusion
 Please do not assume CSP is obsolete, it is still a very robust security measure and we strongly advise everyone to implement this. just be caustious regarding the implementation of the directives `report-uri` and `report-to` , ideally the reporting
