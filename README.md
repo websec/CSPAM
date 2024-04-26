@@ -34,3 +34,8 @@ endpoints should verify that the origin of the requests is actually the domain r
 ## Disclaimer
 
 CSPAM is intended for use by security researchers and professionals in controlled environments to test the resilience of CSP implementations against misuse. This tool should only be used with explicit permission on systems where such testing is authorized. Misuse of this tool can lead to unintended legal and ethical issues.
+
+## Support Us
+If you like the tooling, please do give it a star on GitHub and Follow us for more cool releases:
+
+https://www.linkedin.com/company/websecbv/
